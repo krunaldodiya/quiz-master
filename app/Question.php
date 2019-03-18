@@ -12,7 +12,7 @@ class Question extends Model
      * @var array
      */
     protected $fillable = [
-        'owner_id', 'category_id', 'question', 'answer', 'option_1', 'option_2', 'option_3', 'option_4', 'created_at', 'updated_at'
+        'category_id', 'question', 'answer', 'option_1', 'option_2', 'option_3', 'option_4'
     ];
 
     /**

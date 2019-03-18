@@ -3,18 +3,13 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/test', 'TestController@test')->name('test')->middleware("auth");
 
-Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/questions', 'QuestionController@index')->name('list-questions')->middleware("auth");
 
-Route::get('/passport', 'HomeController@passport')->name('passport');
-
-Route::group(['prefix' => 'payments'], function () {
-    Route::get('/create-order', 'PaymentController@createOrder')->name('paytm.create-order');
-    Route::post('/process-order', 'PaymentController@processOrder')->name('paytm.process-order');
-    Route::post('/order-response', 'PaymentController@orderResponse')->name('paytm.order-response');
-    Route::get('/order-status', 'PaymentController@orderStatus')->name('payments.order-status');
-});
+Route::get('/exams', 'ExamController@index')->name('list-exams')->middleware("auth");
+Route::get('/exams/add', 'ExamController@add')->name('add-exams')->middleware("auth");
+Route::post('/exams/add', 'ExamController@store')->name('store-exams')->middleware("auth");
+Route::post('/exams/fetch', 'ExamController@fetch')->name('fetch-exams')->middleware("auth");

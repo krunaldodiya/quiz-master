@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTopicsTable extends Migration
+class CreateExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('topics', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('exams', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('category_id');
-            $table->string('name');
+            $table->string('url');
+            $table->integer('section');
+            $table->integer('total_pages');
+            $table->integer('page');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topics');
+        Schema::dropIfExists('exams');
     }
 }

@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Quiz;
 use Carbon\Carbon;
+use App\Category;
 
 class TestController extends Controller
 {
     public function test(Request $request)
     {
-        $user = auth()->user();
-        $user->load('quiz');
-        
-        return $user;
+        // $categories = collect(config('category'))
+        //     ->map(function ($category) {
+        //         return [
+        //             'parent_id' => 4,
+        //             'name' => $category,
+        //             'created_at' => Carbon::now(),
+        //             'updated_at' => Carbon::now(),
+        //         ];
+        //     })
+        //     ->toArray();
+
+        // $insert = Category::insert($categories);
+
+        // return response(['status' => $insert], 200);
     }
 }
